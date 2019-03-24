@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+     <head>
+ 	     <title>CultureSwap</title>
+ 	         <link href="C:\Users\Asus\Documents\cultureswap\main.css" rel="stylesheet" type="text/css" />
+ 	         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+ 	         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 	         <script src="C:\Users\Asus\Documents\cultureswap\menu.js"></script>
+     </head>
+
+<body>
+
+     <div class="imgteatris">
+         <img src="C:\Users\Asus\Documents\cultureswap\photos\teatris.jpeg" alt="teatris" style="width: 100%">
+
+     <div class="top-right">
+	     <nav> 
+  	                           
+             <ul>  
+  	             <li>
+  	             	 <button class="btn">
+  	             		 <a href="C:\Users\Asus\Documents\cultureswap\profils.html">
+  	                         <i class="material-icons" style="font-size:30px;color:white;">person
+  	                         </i>
+  	                     </a>
+  	                 </button>
+  	                 <br>
+  	                     <a href="C:\Users\Asus\Documents\cultureswap\profils.html"> Profils </a>
+  	             </li>
+
+	             <li>
+	                 <button class="btn">
+	                 	 <a href="C:\Users\Asus\Documents\cultureswap\login.html">
+	                         <i class="material-icons" style="font-size:30px;color:white;">arrow_forward
+	                         </i>
+	                     </a>
+	                 </button>
+	                 <br>
+	                     <a href="C:\Users\Asus\Documents\cultureswap\login.html"> Pieslēgties </a>
+	             </li>
+
+	             <li>
+	             	 <button class="btn">
+	             	 	 <a href="C:\Users\Asus\Documents\cultureswap\signup.html">
+	                         <i class="material-icons" style="font-size:30px;color:white;">person_add
+	                         </i>
+	                     </a>
+	                 </button>
+	                 <br>
+	                     <a href="C:\Users\Asus\Documents\cultureswap\signup.html"> Reģistrēties </a> 
+	             </li>
+             </ul>
+         </nav> 
+     </div>
+
+<div class="top-left">
+ <nav>
+        <ul> <li><span onclick="openNav()">
+         	 <i class="material-icons" style="font-size:30px;color:white;">menu
+         	 </i>
+         </span></li>
+
+         <div class="searchengine">
+            <li> <button class="btn">
+     	         <i class="material-icons" style="font-size:30px;color:white;">search
+     	         </i>
+             </button>
+         <input type="text" placeholder="meklēt..">
+        </div>
+</li>
+
+</ul>
+</div>
+
+         
+
+  	 	<div id="mySidenav" class="sidenav">
+  <a href="C:\Users\Asus\Documents\cultureswap\index.html" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="C:\Users\Asus\Documents\cultureswap\parmums.html">PAR MUMS</a>
+  <strong><a href="#"><u>SLUDINĀJUMI</u></a>
+  <a href="C:\Users\Asus\Documents\cultureswap\pardod.html">PĀRDOD</a>
+  <a href="C:\Users\Asus\Documents\cultureswap\maina.html">MAINA</a>
+  <a href="C:\Users\Asus\Documents\cultureswap\mekle.html">MEKLĒ</a>
+  <a href="C:\Users\Asus\Documents\cultureswap\iznoma.html">IZNOMĀ</a></strong>
+  <a href="C:\Users\Asus\Documents\cultureswap\pasakumi.html">TURPMĀKIE KULTŪRAS PASĀKUMI</a>
+  <a href="C:\Users\Asus\Documents\cultureswap\skirosana.html"C:\Users\Asus\Documents\cultureswap\skirosana.html>TUVĀKĀS ŠĶIROŠANAS VIETAS</a>
+  <a href="C:\Users\Asus\Documents\cultureswap\kontakti.html">KONTAKTI</a>
+  
+</div>
+
+
+
+</nav>
+
+<div class="centered">
+  	<p><h1> CultureSwap </h1></p>
+  	<p><h2>Neizmet kultūru!</h2></p> 
+
+  	<br><br>
+
+  	<p><h3>Piešķir rekvizītiem otro dzīvi ar CultureSwap.</h3>
+
+  	<br>
+
+  	<nav>
+  		<span>
+  			<button class="btn">
+  				<a href="C:\Users\Asus\Documents\cultureswap\signup.html">REĢISTRĒJIES ŠEIT!
+  				</a>
+  			</button>
+  		</span>
+  	</nav> 
+</div>
+
+	
+   
+<h2>S L U D I N Ā J U M I</h2>
+
+<button class="tablink" onclick="openPage('C:\Users\Asus\Documents\cultureswap\pardod.html', this, 'red')">PĀRDOD<br><i class="material-icons" style="font-size:30px;color:white;">attach_money
+  	                         </i></button>
+<button class="tablink" onclick="openPage('C:\Users\Asus\Documents\cultureswap\maina.html', this, 'green')" id="defaultOpen">MAINA<br><i class="material-icons" style="font-size:30px;color:white;">swap_horizontal_circle
+  	                         </i></button>
+<button class="tablink" onclick="openPage('C:\Users\Asus\Documents\cultureswap\mekle.html', this, 'blue')">MEKLĒ<br><i class="material-icons" style="font-size:30px;color:white;">search
+  	                         </i></button>
+<button class="tablink" onclick="openPage('C:\Users\Asus\Documents\cultureswap\iznoma.html', this, 'orange')">IZNOMĀ<br><i class="material-icons" style="font-size:30px;color:white;">assignment
+  	                         </i></button>
+
+<div id="pardod" class="tabcontent">
+  <h2>PĀRDOD</h2>
+</div>
+
+<div id="maina" class="tabcontent">
+  <h2>MAINA</h2>
+</div>
+
+<div id="mekle" class="tabcontent">
+  <h2>MEKLĒ</h2>
+</div>
+
+<div id="iznoma" class="tabcontent">
+  <h2>IZNOMĀ</h2	+->  
+</div>
+
+
+<h2>Esošās kultūras institūcijas Latvijā.</h2>
+<iframe src="C:\Users\Asus\Documents\cultureswap\www\kulturukarte.html" height="600" width="900"></iframe>
+
+
+<footer>
+             <p>
+            	 <center>
+                         © Cultureswap
+                         <br> <br>
+                         terms | privacy | GDPR
+                 </center>
+             </p>
+</footer>
+
+</body>
+</html>

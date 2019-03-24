@@ -1,0 +1,1368 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<meta charset="UTF-8">
+    <title>OpenLayers Demo</title>
+    <style type="text/css">
+      html, body, #basicMap {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+      }
+    </style>
+    <script src="OpenLayers-2.13.1/OpenLayers.js"></script>
+    <script>
+      var map;
+      var overlay;
+      var popup;
+      var data = {
+    "help": "/dati/lvhttps://data.gov.lv/dati/api/3/action/help_show?name=datastore_search",
+    "result": {
+        "_links": {
+            "next": "/api/3/action/datastore_search?q=te%C4%81tri&offset=100&resource_id=92af15f3-9674-426e-925c-86c6254baa0d",
+            "start": "/api/3/action/datastore_search?q=te%C4%81tri&resource_id=92af15f3-9674-426e-925c-86c6254baa0d"
+        },
+        "fields": [
+            {
+                "id": "_id",
+                "type": "int"
+            },
+            {
+                "id": "Nozare",
+                "type": "text"
+            },
+            {
+                "id": "Objekta nosaukums",
+                "type": "text"
+            },
+            {
+                "id": "ISIL kods",
+                "type": "text"
+            },
+            {
+                "id": "Adrese",
+                "type": "text"
+            },
+            {
+                "id": "LAT",
+                "type": "numeric"
+            },
+            {
+                "id": "LON",
+                "type": "numeric"
+            },
+            {
+                "id": "LKS-92 X",
+                "type": "numeric"
+            },
+            {
+                "id": "LKS-92 Y",
+                "type": "numeric"
+            }
+        ],
+        "include_total": true,
+        "q": "teātri",
+        "records": [
+            {
+                "Adrese": "Raiņa bulvāris 19, Rīga, LV-1050",
+                "ISIL kods": "LV-KOLEKTIVS-013369",
+                "LAT": 56.9508,
+                "LKS-92 X": 507075,
+                "LKS-92 Y": 311916,
+                "LON": 24.11631,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Rīga, Latvijas Universitātes biedrības \"Juventus\" Studentu teātris",
+                "_id": 6807,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Atmodas iela 16, Aizpute, Aizputes nov., LV-3456",
+                "ISIL kods": "LV-KOLEKTIVS-010269",
+                "LAT": 56.71928,
+                "LKS-92 X": 353306,
+                "LKS-92 Y": 288705,
+                "LON": 21.60294,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Aizputes Tautas teātris",
+                "_id": 218,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Brūža iela 7, Alūksne, Alūksnes nov., LV-4301",
+                "ISIL kods": "LV-KOLEKTIVS-009722",
+                "LAT": 57.42652,
+                "LKS-92 X": 683127,
+                "LKS-92 Y": 368975,
+                "LON": 27.05012,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Alūksnes Kultūras centra U.Sedlenieka Tautas teātris \"Slieksnis\"",
+                "_id": 314,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Brūža iela 7, Alūksne, Alūksnes nov., LV-4301",
+                "ISIL kods": "LV-KOLEKTIVS-009717",
+                "LAT": 57.42652,
+                "LKS-92 X": 683127,
+                "LKS-92 Y": 368975,
+                "LON": 27.05012,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Alūksnes Kultūras centra\"Mazais teātris\"",
+                "_id": 315,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Latgales iela 54, Rēzekne, LV-4601",
+                "ISIL kods": "LV-TEA-012306",
+                "LAT": 56.49931,
+                "LKS-92 X": 705298,
+                "LKS-92 Y": 266640,
+                "LON": 27.33559,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Rēzeknes pilsētas teātra studija \"Joriks\"",
+                "_id": 6677,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Brāļu Skrindu iela 3, Rēzekne, LV-4601",
+                "ISIL kods": "LV-KOLEKTIVS-014007",
+                "LAT": 56.50519,
+                "LKS-92 X": 704795,
+                "LKS-92 Y": 267271,
+                "LON": 27.32793,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Rēzeknes Tautas teātris",
+                "_id": 6690,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Atbrīvošanas aleja 97, Rēzekne, LV-4601",
+                "ISIL kods": "LV-KOLEKTIVS-015690",
+                "LAT": 56.50798,
+                "LKS-92 X": 704950,
+                "LKS-92 Y": 267590,
+                "LON": 27.33069,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Rēzeknes Teātris-studija \"Joriks\"",
+                "_id": 6692,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Spīdolas iela 2, Aizkraukle, Aizkraukles nov., LV-5101",
+                "ISIL kods": "LV-KOLEKTIVS-011594",
+                "LAT": 56.59674,
+                "LKS-92 X": 576494,
+                "LKS-92 Y": 273194,
+                "LON": 25.2458,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Aizkraukles Tautas teātris",
+                "_id": 183,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Anniņmuižas bulvāris 29, Rīga, LV-1067",
+                "ISIL kods": "LV-KOLEKTIVS-013526",
+                "LAT": 56.95953,
+                "LKS-92 X": 501030,
+                "LKS-92 Y": 312882,
+                "LON": 24.01694,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Rīga, RPKIA Kultūras un atpūtas centra \"Imanta\" bērnu - jauniešu teātris \"Horizonts\"",
+                "_id": 6873,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Ropažu iela 2, Rīga, LV-1039",
+                "ISIL kods": "LV-KOLEKTIVS-013319",
+                "LAT": 56.97451,
+                "LKS-92 X": 510091,
+                "LKS-92 Y": 314561,
+                "LON": 24.166,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Rīga, VEF Kultūras pils Tautas teātris",
+                "_id": 6937,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Merķeļa iela 4, Rīga, LV-1050",
+                "ISIL kods": "LV-TEA-010825",
+                "LAT": 56.94951,
+                "LKS-92 X": 507269,
+                "LKS-92 Y": 311773,
+                "LON": 24.1195,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Rīgas Cirks",
+                "_id": 7074,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Amatu iela 5, Rīga, LV-1050",
+                "ISIL kods": "LV-KOLEKTIVS-013410",
+                "LAT": 56.94945,
+                "LKS-92 X": 506569,
+                "LKS-92 Y": 311765,
+                "LON": 24.10799,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Rīgas Kultūras un tautas mākslas centra \"Mazā Ģilde\" Vecpilsētas teātris ",
+                "_id": 7143,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Krišjāņa Barona iela 99, Rīga, LV-1012",
+                "ISIL kods": "LV-KOLEKTIVS-014589",
+                "LAT": 56.96269,
+                "LKS-92 X": 508688,
+                "LKS-92 Y": 313242,
+                "LON": 24.14287,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Rīgas Skolēnu pils teātris \"Zīļuks\"",
+                "_id": 7213,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Kaļķu iela 1, Rīga, LV-1050",
+                "ISIL kods": "LV-KOLEKTIVS-013386",
+                "LAT": 56.94747,
+                "LKS-92 X": 506414,
+                "LKS-92 Y": 311544,
+                "LON": 24.10544,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Rīgas Tehniskās universitātes studentu teātris \"Kamertonis\"",
+                "_id": 7242,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Avotu iela 12, Saldus, Saldus nov., LV-3801",
+                "ISIL kods": "LV-KOLEKTIVS-010614",
+                "LAT": 56.66597,
+                "LKS-92 X": 407395,
+                "LKS-92 Y": 281225,
+                "LON": 22.48903,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Saldus Tautas teātris",
+                "_id": 7773,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Liepu iela 1, Salnava, Salnavas pag., Kārsavas nov., LV-5740",
+                "ISIL kods": "LV-KOLEKTIVS-012525",
+                "LAT": 56.81348,
+                "LKS-92 X": 717151,
+                "LKS-92 Y": 302269,
+                "LON": 27.55777,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Salnavas kultūras nama dzejas teātris",
+                "_id": 7799,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Pils iela 10, Sigulda, Siguldas nov., LV-2150",
+                "ISIL kods": "LV-KOLEKTIVS-014192",
+                "LAT": 57.15629,
+                "LKS-92 X": 551592,
+                "LKS-92 Y": 335106,
+                "LON": 24.85287,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Siguldas novada Kultūras centra Tautas Teātris",
+                "_id": 8095,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Gaujas iela 1, Smiltene, Smiltenes nov., LV-4729",
+                "ISIL kods": "LV-KOLEKTIVS-010705",
+                "LAT": 57.42274,
+                "LKS-92 X": 614298,
+                "LKS-92 Y": 366045,
+                "LON": 25.90329,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Smiltenes Tautas teātris",
+                "_id": 8340,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Jērcēnmuiža, Jērcēni, Jērcēnu pag., Strenču nov., LV-4715",
+                "ISIL kods": "LV-KOLEKTIVS-010682",
+                "LAT": 57.69128,
+                "LKS-92 X": 598388,
+                "LKS-92 Y": 395538,
+                "LON": 25.65043,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Strenču novada Kultūras centra Jērcēnu Dzejas teātris",
+                "_id": 8540,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Skolas iela 11, Šķēde, Šķēdes pag., Saldus nov., LV-3875",
+                "ISIL kods": "LV-KOLEKTIVS-011399",
+                "LAT": 56.85541,
+                "LKS-92 X": 401199,
+                "LKS-92 Y": 302461,
+                "LON": 22.37978,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Šķēdes Dailas teātris",
+                "_id": 8691,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Maskavas iela 108/110, Rīga, LV-1003",
+                "ISIL kods": "LV-NVO-012493",
+                "LAT": 56.93922,
+                "LKS-92 X": 508438,
+                "LKS-92 Y": 310629,
+                "LON": 24.13868,
+                "Nozare": "Nevalstiskas organizācijas",
+                "Objekta nosaukums": "Teātris \"Skatuve\"",
+                "_id": 8872,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Lielā iela 1, Tukums, Tukuma nov., LV-3101",
+                "ISIL kods": "LV-KOLEKTIVS-010650",
+                "LAT": 56.9643,
+                "LKS-92 X": 448552,
+                "LKS-92 Y": 313731,
+                "LON": 23.15389,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Tukuma pilsētas Kultūras nama bērnu un jauniešu teātris KNIFIŅŠ",
+                "_id": 9018,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Lielā iela 1, Tukums, Tukuma nov., LV-3101",
+                "ISIL kods": "LV-KOLEKTIVS-010649",
+                "LAT": 56.9643,
+                "LKS-92 X": 448552,
+                "LKS-92 Y": 313731,
+                "LON": 23.15389,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Tukuma pilsētas Kultūras nama jaunatnes teātris BRĪVĀ VERSIJA",
+                "_id": 9022,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Lielā iela 1, Tukums, Tukuma nov., LV-3101",
+                "ISIL kods": "LV-KOLEKTIVS-013946",
+                "LAT": 56.9643,
+                "LKS-92 X": 448552,
+                "LKS-92 Y": 313731,
+                "LON": 23.15389,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Tukuma teātris",
+                "_id": 9041,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Tirgotāju iela 16A-1, Alūksne, Alūksnes nov., LV-4301",
+                "ISIL kods": "LV-NVO-013063",
+                "LAT": 57.42103,
+                "LKS-92 X": 683140,
+                "LKS-92 Y": 368363,
+                "LON": 27.04988,
+                "Nozare": "Nevalstiskas organizācijas",
+                "Objekta nosaukums": "Ulda Sedlenieka Alūksnes Tautas teātris \"Slieksnis\"",
+                "_id": 9103,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Emīla Dārziņa iela 8, Valka, Valkas nov., LV-4701",
+                "ISIL kods": "LV-KOLEKTIVS-010750",
+                "LAT": 57.774,
+                "LKS-92 X": 620031,
+                "LKS-92 Y": 405337,
+                "LON": 26.01815,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Valkas pilsētas teātris",
+                "_id": 9257,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Kovaļevsku iela 4, Vārkava, Vārkavas pag., Vārkavas nov., LV-5337",
+                "ISIL kods": "LV-KOLEKTIVS-014168",
+                "LAT": 56.24526,
+                "LKS-92 X": 659027,
+                "LKS-92 Y": 236340,
+                "LON": 26.56643,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Vārkavas pašdarbnieku teātris ''Kulda''",
+                "_id": 9449,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Kuldīgas iela 18, Ventspils, LV-3601",
+                "ISIL kods": "LV-KOLEKTIVS-010798",
+                "LAT": 57.39493,
+                "LKS-92 X": 353824,
+                "LKS-92 Y": 363963,
+                "LON": 21.5676,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Ventspils teātris",
+                "_id": 9673,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Smilšu iela 2, Viesīte, Viesītes nov., LV-5237",
+                "ISIL kods": "LV-KOLEKTIVS-011242",
+                "LAT": 56.34526,
+                "LKS-92 X": 596297,
+                "LKS-92 Y": 245599,
+                "LON": 25.55801,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Viesītes kultūras pils amatieru teātris \"Vēri\"",
+                "_id": 9794,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Pagastmāja, Zeltiņi, Zeltiņu pag., Alūksnes nov., LV-4345",
+                "ISIL kods": "LV-KOLEKTIVS-015614",
+                "LAT": 57.36054,
+                "LKS-92 X": 666010,
+                "LKS-92 Y": 360889,
+                "LON": 26.75996,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Zeltiņu senioru teātris \"Pārsteigums\"",
+                "_id": 10096,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Jelgavas iela 63, Rīga, LV-1004",
+                "ISIL kods": "LV-TEA-012321",
+                "LAT": 56.92739,
+                "LKS-92 X": 505649,
+                "LKS-92 Y": 309308,
+                "LON": 24.09281,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Apvienība \"Ars Nova\"",
+                "_id": 486,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Parka iela 7, Limbaži, Limbažu nov., LV-4001",
+                "ISIL kods": "LV-KOLEKTIVS-012092",
+                "LAT": 57.51209,
+                "LKS-92 X": 542758,
+                "LKS-92 Y": 374616,
+                "LON": 24.7137,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Ausekļa Limbažu teātris",
+                "_id": 655,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Riharda Vāgnera iela 8, Rīga, LV-1050",
+                "ISIL kods": "LV-TEA-012328",
+                "LAT": 56.94896,
+                "LKS-92 X": 506756,
+                "LKS-92 Y": 311710,
+                "LON": 24.11106,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Austrumu Robeža",
+                "_id": 662,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Brīvības iela 61, Balvi, Balvu nov., LV-4501",
+                "ISIL kods": "LV-KOLEKTIVS-009784",
+                "LAT": 57.13293,
+                "LKS-92 X": 697807,
+                "LKS-92 Y": 336925,
+                "LON": 27.26859,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Balvu Tautas teātris",
+                "_id": 811,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Kalna iela 18, Bauska, Bauskas nov., LV-3901",
+                "ISIL kods": "LV-KOLEKTIVS-011299",
+                "LAT": 56.40868,
+                "LKS-92 X": 511457,
+                "LKS-92 Y": 251583,
+                "LON": 24.18566,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Bauskas Kultūras centra Tautas teātris",
+                "_id": 876,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Baznīcas iela 7-16, Balvi, Balvu nov., LV-4501",
+                "ISIL kods": "LV-NVO-009464",
+                "LAT": 57.13244,
+                "LKS-92 X": 698046,
+                "LKS-92 Y": 336881,
+                "LON": 27.27249,
+                "Nozare": "Nevalstiskas organizācijas",
+                "Objekta nosaukums": "Biedrība \"Balvu teātris\"",
+                "_id": 1023,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Dzirnavu iela 1, Blome, Blomes pag., Smiltenes nov., LV-4707",
+                "ISIL kods": "LV-KOLEKTIVS-010663",
+                "LAT": 57.43632,
+                "LKS-92 X": 606836,
+                "LKS-92 Y": 367355,
+                "LON": 25.77968,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Blomes SIA teātris",
+                "_id": 1152,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Aleksandra Čaka iela 67/69, Rīga, LV-1011",
+                "ISIL kods": "LV-TEA-012322",
+                "LAT": 56.95585,
+                "LKS-92 X": 508220,
+                "LKS-92 Y": 312480,
+                "LON": 24.13515,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Brīvo aktieru sabiedrība",
+                "_id": 1221,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Lielcieceres iela 10, Brocēni, Brocēnu nov., LV-3851",
+                "ISIL kods": "LV-KOLEKTIVS-012559",
+                "LAT": 56.67977,
+                "LKS-92 X": 412246,
+                "LKS-92 Y": 282658,
+                "LON": 22.56766,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Brocēnu teātris",
+                "_id": 1244,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Jūras iela 1A, Carnikava, Carnikavas nov., LV-2163",
+                "ISIL kods": "LV-KOLEKTIVS-016844",
+                "LAT": null,
+                "LKS-92 X": null,
+                "LKS-92 Y": null,
+                "LON": null,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Carnikavas novada improvizācijas teātris \"PLIT\"",
+                "_id": 1305,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Raunas iela 12, Cēsis, Cēsu nov., LV-4101",
+                "ISIL kods": "LV-KOLEKTIVS-009853",
+                "LAT": 57.31136,
+                "LKS-92 X": 576587,
+                "LKS-92 Y": 352761,
+                "LON": 25.27142,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Cēsu Jaunatnes teātris",
+                "_id": 1341,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Pils iela 8, Cesvaine, Cesvaines nov., LV-4871",
+                "ISIL kods": "LV-KOLEKTIVS-012021",
+                "LAT": 56.96743,
+                "LKS-92 X": 640761,
+                "LKS-92 Y": 316146,
+                "LON": 26.31537,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Cesvaines Tautas teātris",
+                "_id": 1391,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Brīvības iela 75, Rīga, LV-1001",
+                "ISIL kods": "LV-EU2015-000066",
+                "LAT": 56.95979,
+                "LKS-92 X": 507673,
+                "LKS-92 Y": 312917,
+                "LON": 24.12617,
+                "Nozare": "EU2015.lv",
+                "Objekta nosaukums": "Dailes teātris ",
+                "_id": 1504,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Varšavas iela 30, Daugavpils, LV-5404",
+                "ISIL kods": "LV-KOLEKTIVS-011837",
+                "LAT": 55.87539,
+                "LKS-92 X": 658584,
+                "LKS-92 Y": 195118,
+                "LON": 26.53488,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Daugavpils Poļu kultūras centra bērnu teātris \"Smaidīgā varavīksne\"",
+                "_id": 1625,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Smilšu iela 92, Daugavpils, LV-5410",
+                "ISIL kods": "LV-KOLEKTIVS-009974",
+                "LAT": 55.88721,
+                "LKS-92 X": 659779,
+                "LKS-92 Y": 196479,
+                "LON": 26.55476,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Daugavpils Tautas teātris \"Iskateļ\"",
+                "_id": 1638,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Aizsila iela 12, Rīga, LV-1006",
+                "ISIL kods": "LV-TEA-012331",
+                "LAT": 56.97311,
+                "LKS-92 X": 511707,
+                "LKS-92 Y": 314410,
+                "LON": 24.19258,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Dejas Anatomija",
+                "_id": 1684,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Maskavas iela 12 k-2, Rīga, LV-1050",
+                "ISIL kods": "LV-TEA-012310",
+                "LAT": 56.94163,
+                "LKS-92 X": 507158,
+                "LKS-92 Y": 310895,
+                "LON": 24.11765,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Dirty Deal Teatro",
+                "_id": 1748,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Brīvības iela 11, Dobele, Dobeles nov., LV-3701",
+                "ISIL kods": "LV-KOLEKTIVS-011777",
+                "LAT": 56.62516,
+                "LKS-92 X": 455773,
+                "LKS-92 Y": 275895,
+                "LON": 23.27918,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Dobeles jauniešu teātris \"Pitons\"",
+                "_id": 1771,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Rīgas iela 5, Ērgļi, Ērgļu pag., Ērgļu nov., LV-4840",
+                "ISIL kods": "LV-KOLEKTIVS-012009",
+                "LAT": 56.89796,
+                "LKS-92 X": 600106,
+                "LKS-92 Y": 307231,
+                "LON": 25.64349,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Ērgļu teātris",
+                "_id": 2147,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Tālavas iela 7-22, Valka, Valkas nov., LV-4701",
+                "ISIL kods": "LV-NVO-009509",
+                "LAT": 57.77628,
+                "LKS-92 X": 620085,
+                "LKS-92 Y": 405593,
+                "LON": 26.01918,
+                "Nozare": "Nevalstiskas organizācijas",
+                "Objekta nosaukums": "Fonds \"Valkas pilsētas teātris\"",
+                "_id": 2265,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Omnibusa iela 19, Jūrmala, LV-2015",
+                "ISIL kods": "LV-GALERIJA-011496",
+                "LAT": 56.97349,
+                "LKS-92 X": 487748,
+                "LKS-92 Y": 314453,
+                "LON": 23.79846,
+                "Nozare": "Mākslas saloni/ galerijas",
+                "Objekta nosaukums": "Gleznu teātris \"Inner Light\"",
+                "_id": 2405,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "O. Kalpaka iela 60, Gulbene, Gulbenes nov., LV-4401",
+                "ISIL kods": "LV-KOLEKTIVS-016314",
+                "LAT": 57.17281,
+                "LKS-92 X": 667022,
+                "LKS-92 Y": 340008,
+                "LON": 26.76269,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Gulbenes kultūras centra bērnu teātris",
+                "_id": 2498,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "O. Kalpaka iela 60, Gulbene, Gulbenes nov., LV-4401",
+                "ISIL kods": "LV-KOLEKTIVS-010097",
+                "LAT": 57.17281,
+                "LKS-92 X": 667022,
+                "LKS-92 Y": 340008,
+                "LON": 26.76269,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Gulbenes Tautas teātris",
+                "_id": 2521,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Ropažu iela 2, Rīga, LV-1039",
+                "ISIL kods": "LV-TEA-012332",
+                "LAT": 56.97451,
+                "LKS-92 X": 510091,
+                "LKS-92 Y": 314561,
+                "LON": 24.166,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Indras Reinholdes kamerbalets",
+                "_id": 2685,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Maurēnu iela 6-1, Aizkraukle, Aizkraukles nov., LV-5101",
+                "ISIL kods": "LV-RADIND-000314",
+                "LAT": 56.60418,
+                "LKS-92 X": 577445,
+                "LKS-92 Y": 274039,
+                "LON": 25.26154,
+                "Nozare": "Radošās industrijas",
+                "Objekta nosaukums": "J.Babra leļļu teātris \"Tims\"",
+                "_id": 2804,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Baznīcas iela 2, Strenči, Strenču nov., LV-4730",
+                "ISIL kods": "LV-KOLEKTIVS-010718",
+                "LAT": 57.62941,
+                "LKS-92 X": 600814,
+                "LKS-92 Y": 388707,
+                "LON": 25.68825,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "J.Ziemeļnieka Strenču Tautas teātris",
+                "_id": 2815,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Meža prospekts 15, Ogre, Ogres nov., LV-5001",
+                "ISIL kods": "LV-TEA-011917",
+                "LAT": 56.82404,
+                "LKS-92 X": 536964,
+                "LKS-92 Y": 297963,
+                "LON": 24.60563,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Jauniešu teātra studija ESTEPATĀS",
+                "_id": 2928,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Vecpilsētas laukums 3, Jēkabpils, LV-5201",
+                "ISIL kods": "LV-KOLEKTIVS-011238",
+                "LAT": 56.49781,
+                "LKS-92 X": 614854,
+                "LKS-92 Y": 263047,
+                "LON": 25.86574,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Jēkabpils Tautas teātris",
+                "_id": 3110,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Krišjāņa Barona iela 6, Jelgava, LV-3001",
+                "ISIL kods": "LV-KOLEKTIVS-010133",
+                "LAT": 56.65392,
+                "LKS-92 X": 483049,
+                "LKS-92 Y": 278898,
+                "LON": 23.72352,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Jelgavas pilsētas pašvaldības iestādes \"Kultūra\" Ādolfa Alunāna Jelgavas teātris",
+                "_id": 3166,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Garozas iela 15, Jelgava, LV-3002",
+                "ISIL kods": "LV-KOLEKTIVS-010148",
+                "LAT": 56.65392,
+                "LKS-92 X": 483049,
+                "LKS-92 Y": 278898,
+                "LON": 23.72352,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Jelgavas pilsētas pašvaldības iestādes \"Kultūra\" Jelgavas Jaunais teātris",
+                "_id": 3176,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Tautas nams, Jūrkalne, Jūrkalnes pag., Ventspils nov., LV-3626",
+                "ISIL kods": "LV-KOLEKTIVS-012975",
+                "LAT": 57.00538,
+                "LKS-92 X": 341291,
+                "LKS-92 Y": 321022,
+                "LON": 21.38667,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Jūrkalnes tautas nama bērnu un jauniešu teātris \"Jampadracis\"",
+                "_id": 3275,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Pļavniekkalna iela 35, Katlakalns, Ķekavas pag., Ķekavas nov., LV-2111",
+                "ISIL kods": "LV-KOLEKTIVS-014386",
+                "LAT": 56.87432,
+                "LKS-92 X": 511018,
+                "LKS-92 Y": 303411,
+                "LON": 24.18076,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Katlakalna improvizācijas teātris",
+                "_id": 3545,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Lielā iela 19/21, Talsi, Talsu nov., LV-3201",
+                "ISIL kods": "LV-KOLEKTIVS-011537",
+                "LAT": 57.24404,
+                "LKS-92 X": 414953,
+                "LKS-92 Y": 345432,
+                "LON": 22.5907,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Krišjāņa Valdemāra Talsu teātris",
+                "_id": 3868,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Rīgas iela 212, Jēkabpils, LV-5202",
+                "ISIL kods": "LV-KOLEKTIVS-011138",
+                "LAT": 56.50688,
+                "LKS-92 X": 614743,
+                "LKS-92 Y": 264055,
+                "LON": 25.86438,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Krustpils kultūras nama improvizācijas teātris",
+                "_id": 3885,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Raiņa iela 21, Kuldīga, Kuldīgas nov., LV-3301",
+                "ISIL kods": "LV-KOLEKTIVS-010248",
+                "LAT": 56.9663,
+                "LKS-92 X": 376597,
+                "LKS-92 Y": 315468,
+                "LON": 21.97027,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Kuldīgas jauniešu teātris \"Focus\"",
+                "_id": 3940,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Raiņa iela 21, Kuldīga, Kuldīgas nov., LV-3301",
+                "ISIL kods": "LV-KOLEKTIVS-014836",
+                "LAT": 56.9663,
+                "LKS-92 X": 376597,
+                "LKS-92 Y": 315468,
+                "LON": 21.97027,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Kuldīgas Kultūras centra bērnu teātris \"Focus\"",
+                "_id": 3951,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Talanti, Kurmāles pag., Kuldīgas nov., LV-3301",
+                "ISIL kods": "LV-KOLEKTIVS-016153",
+                "LAT": 56.94149,
+                "LKS-92 X": 373848,
+                "LKS-92 Y": 312787,
+                "LON": 21.92642,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Kuldīgas Kustību teātris \"Purple Line\"",
+                "_id": 3962,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Gaismas iela 17, Ķekava, Ķekavas pag., Ķekavas nov., LV-2123",
+                "ISIL kods": "LV-KOLEKTIVS-015212",
+                "LAT": 56.82433,
+                "LKS-92 X": 514015,
+                "LKS-92 Y": 297856,
+                "LON": 24.22963,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Ķekavas kultūras nama \"Jaunais Miltu teātris\"",
+                "_id": 4125,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Laidu skola, Laidi, Laidu pag., Kuldīgas nov., LV-3317",
+                "ISIL kods": "LV-KOLEKTIVS-013899",
+                "LAT": 56.74656,
+                "LKS-92 X": 370267,
+                "LKS-92 Y": 291184,
+                "LON": 21.87861,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Laidu amatieru teātris",
+                "_id": 4175,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Anniņmuižas bulvāris 29, Rīga, LV-1067",
+                "ISIL kods": "LV-NVO-012734",
+                "LAT": 56.95953,
+                "LKS-92 X": 501030,
+                "LKS-92 Y": 312882,
+                "LON": 24.01694,
+                "Nozare": "Nevalstiskas organizācijas",
+                "Objekta nosaukums": "Latvijas Komēdijas teātris",
+                "_id": 4307,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Jāņa Čakstes bulvāris 5, Jelgava, LV-3001",
+                "ISIL kods": "LV-KOLEKTIVS-010150",
+                "LAT": 56.65115,
+                "LKS-92 X": 483523,
+                "LKS-92 Y": 278588,
+                "LON": 23.73127,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Latvijas Lauksaimniecības universitātes Studentu teātris",
+                "_id": 4326,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Aspazijas bulvāris 3, Rīga, LV-1050",
+                "ISIL kods": "LV-TEA-010821",
+                "LAT": 56.94923,
+                "LKS-92 X": 506946,
+                "LKS-92 Y": 311741,
+                "LON": 24.11419,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Latvijas Nacionālā Opera un Balets",
+                "_id": 4356,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Braila iela 6, Rīga, LV-1024",
+                "ISIL kods": "LV-KOLEKTIVS-014448",
+                "LAT": 56.98621,
+                "LKS-92 X": 515321,
+                "LKS-92 Y": 315880,
+                "LON": 24.25211,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Latvijas Neredzīgo biedrības Strazdumuižas kluba drāmas un dzejas teātris",
+                "_id": 4382,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Tautas nams, Lestene, Lestenes pag., Tukuma nov., LV-3146",
+                "ISIL kods": "LV-KOLEKTIVS-017142",
+                "LAT": 56.77549,
+                "LKS-92 X": 447622,
+                "LKS-92 Y": 292724,
+                "LON": 23.14292,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Lestenes pagasta tautas nama bērnu teātris RAKARI",
+                "_id": 4586,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Parka iela 3, Lielvārde, Lielvārdes nov., LV-5070",
+                "ISIL kods": "LV-KOLEKTIVS-010479",
+                "LAT": 56.71957,
+                "LKS-92 X": 548997,
+                "LKS-92 Y": 286458,
+                "LON": 24.80056,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Lielvārdes novada Kultūras centra struktūrvienības kultūras nams \"Lielvārde\" Tautas teātris",
+                "_id": 4667,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Rožu laukums 5/6, Liepāja, LV-3401",
+                "ISIL kods": "LV-KOLEKTIVS-013511",
+                "LAT": 56.50773,
+                "LKS-92 X": 316160,
+                "LKS-92 Y": 266591,
+                "LON": 21.01252,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Liepājas Bērnu teātris",
+                "_id": 4705,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Rožu laukums 5/6, Liepāja, LV-3401",
+                "ISIL kods": "LV-KOLEKTIVS-012080",
+                "LAT": 56.50773,
+                "LKS-92 X": 316160,
+                "LKS-92 Y": 266591,
+                "LON": 21.01252,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Liepājas Metalurgu Tautas teātris",
+                "_id": 4767,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Rožu laukums 5/6, Liepāja, LV-3401",
+                "ISIL kods": "LV-KOLEKTIVS-012078",
+                "LAT": 56.50773,
+                "LKS-92 X": 316160,
+                "LKS-92 Y": 266591,
+                "LON": 21.01252,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Liepājas Tautas teātris",
+                "_id": 4800,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Ošu iela 6-19, Augšlīgatne, Līgatnes pag., Līgatnes nov., LV-4108",
+                "ISIL kods": "LV-NVO-012753",
+                "LAT": 57.17834,
+                "LKS-92 X": 562586,
+                "LKS-92 Y": 337714,
+                "LON": 25.03524,
+                "Nozare": "Nevalstiskas organizācijas",
+                "Objekta nosaukums": "Līgatnes novada \"Gintas Modes teātris\"",
+                "_id": 4879,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Rīgas iela 105, Līvāni, Līvānu nov., LV-5316",
+                "ISIL kods": "LV-KOLEKTIVS-014208",
+                "LAT": 56.35903,
+                "LKS-92 X": 634232,
+                "LKS-92 Y": 248160,
+                "LON": 26.17265,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Līvānu novada kultūras centra jauniešu teātris",
+                "_id": 4992,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Bruņinieku iela 57, Rīga, LV-1011",
+                "ISIL kods": "LV-KOLEKTIVS-014587",
+                "LAT": 56.95478,
+                "LKS-92 X": 508200,
+                "LKS-92 Y": 312361,
+                "LON": 24.13482,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "LKA Latvijas Kultūras koledžas Studentu teātris",
+                "_id": 5043,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Raiņa iela 12, Madona, Madonas nov., LV-4801",
+                "ISIL kods": "LV-KOLEKTIVS-010281",
+                "LAT": 56.85364,
+                "LKS-92 X": 635205,
+                "LKS-92 Y": 303285,
+                "LON": 26.2172,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Madonas Rūdolfa Blaumaņa tautas teātris",
+                "_id": 5195,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "1. maija iela 80, Malta, Maltas pag., Rēzeknes nov., LV-4630",
+                "ISIL kods": "LV-KOLEKTIVS-013210",
+                "LAT": 56.34785,
+                "LKS-92 X": 695701,
+                "LKS-92 Y": 249301,
+                "LON": 27.16697,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Maltas kultūras nama dzejas teātris \"Domugrauds\"",
+                "_id": 5291,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Miera iela 87A-12, Rīga, LV-1013",
+                "ISIL kods": "LV-NVO-012598",
+                "LAT": 56.97274,
+                "LKS-92 X": 508542,
+                "LKS-92 Y": 314361,
+                "LON": 24.14051,
+                "Nozare": "Nevalstiskas organizācijas",
+                "Objekta nosaukums": "Mišina Eiropas teātris \"Zelta Gailis\"",
+                "_id": 5621,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Kronvalda bulvāris 2, Rīga, LV-1010",
+                "ISIL kods": "LV-EU2015-000007",
+                "LAT": 56.95363,
+                "LKS-92 X": 506379,
+                "LKS-92 Y": 312230,
+                "LON": 24.10488,
+                "Nozare": "EU2015.lv",
+                "Objekta nosaukums": "Nacionālais teātris",
+                "_id": 5676,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Bārtas iela 6, Nīca, Nīcas pag., Nīcas nov., LV-3473",
+                "ISIL kods": "LV-KOLEKTIVS-016356",
+                "LAT": 56.34694,
+                "LKS-92 X": 318706,
+                "LKS-92 Y": 248561,
+                "LON": 21.06632,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Nīcas amatieru teātris",
+                "_id": 5743,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Halle, Rogovka, Nautrēnu pag., Rēzeknes nov., LV-4652",
+                "ISIL kods": "LV-KOLEKTIVS-013138",
+                "LAT": 56.71178,
+                "LKS-92 X": 708949,
+                "LKS-92 Y": 290510,
+                "LON": 27.41407,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Nautrēnu pagasta jauniešu muzikālais teātris",
+                "_id": 5715,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Pagasta ēka, Nītaure, Nītaures pag., Amatas nov., LV-4112",
+                "ISIL kods": "LV-KOLEKTIVS-009914",
+                "LAT": 57.07029,
+                "LKS-92 X": 572387,
+                "LKS-92 Y": 325844,
+                "LON": 25.19388,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Nītaures Lauku teātris",
+                "_id": 5798,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Brīvības iela 15, Ogre, Ogres nov., LV-5001",
+                "ISIL kods": "LV-KOLEKTIVS-013429",
+                "LAT": 56.8171,
+                "LKS-92 X": 536795,
+                "LKS-92 Y": 297189,
+                "LON": 24.60275,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Ogres novada kultūras nama bērnu dramatiskais kolektīvs \"Mazais teātris\"",
+                "_id": 5874,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Brīvības iela 15, Ogre, Ogres nov., LV-5001",
+                "ISIL kods": "LV-KOLEKTIVS-010488",
+                "LAT": 56.81712,
+                "LKS-92 X": 536794,
+                "LKS-92 Y": 297192,
+                "LON": 24.60273,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Ogres Tautas teātris",
+                "_id": 5883,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Auces iela 9, Rīga, LV-1048",
+                "ISIL kods": "LV-TEA-012304",
+                "LAT": 56.94347,
+                "LKS-92 X": 504996,
+                "LKS-92 Y": 311097,
+                "LON": 24.08212,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Olgas Žitluhinas Dejas Kompānija",
+                "_id": 5920,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Rīgas iela 23, Ozolnieki, Ozolnieku pag., Ozolnieku nov., LV-3018",
+                "ISIL kods": "LV-KOLEKTIVS-013920",
+                "LAT": 56.69002,
+                "LKS-92 X": 487372,
+                "LKS-92 Y": 282901,
+                "LON": 23.79384,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Ozolnieku tautas nama bērnu un jauniešu muzikālais teātris \"Nianse\"",
+                "_id": 5971,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Dailes, Penkule, Penkules pag., Dobeles nov., LV-3725",
+                "ISIL kods": "LV-KOLEKTIVS-010067",
+                "LAT": 56.48299,
+                "LKS-92 X": 449160,
+                "LKS-92 Y": 260144,
+                "LON": 23.1745,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Penkules kultūras nama Leļļu teātris \"Knauķīši\"",
+                "_id": 6125,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Daugavgrīvas iela 68A-37, Rīga, LV-1007",
+                "ISIL kods": "LV-TEA-012329",
+                "LAT": 56.95609,
+                "LKS-92 X": 504228,
+                "LKS-92 Y": 312501,
+                "LON": 24.06952,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Pigeon Bridge",
+                "_id": 6205,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Vārpas, Pūre, Pūres pag., Tukuma nov., LV-3124",
+                "ISIL kods": "LV-KOLEKTIVS-013970",
+                "LAT": 57.03811,
+                "LKS-92 X": 434166,
+                "LKS-92 Y": 322152,
+                "LON": 22.91514,
+                "Nozare": "Mākslinieciskie kolektīvi",
+                "Objekta nosaukums": "Pūres bērnu teātris ĀBOLĪTIS",
+                "_id": 6452,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Lapu iela 6-40, Ogre, Ogres nov., LV-5001",
+                "ISIL kods": "LV-TEA-012320",
+                "LAT": 56.81994,
+                "LKS-92 X": 536852,
+                "LKS-92 Y": 297506,
+                "LON": 24.60373,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Radošā apvienība \"Nomadi\"",
+                "_id": 6519,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Brīvības gatve 214B, Rīga, LV-1039",
+                "ISIL kods": "LV-TEA-012330",
+                "LAT": 56.97062,
+                "LKS-92 X": 509812,
+                "LKS-92 Y": 314128,
+                "LON": 24.16139,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Radošā apvienība \"Spiediens\"",
+                "_id": 6520,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Maskavas iela 12 k-2, Rīga, LV-1050",
+                "ISIL kods": "LV-TEA-012305",
+                "LAT": 56.94163,
+                "LKS-92 X": 507158,
+                "LKS-92 Y": 310895,
+                "LON": 24.11765,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Radošā apvienība \"Umka.Lv\"",
+                "_id": 6521,
+                "rank": 0.0573088
+            },
+            {
+                "Adrese": "Pērnavas iela 69-2, Rīga, LV-1009",
+                "ISIL kods": "LV-TEA-010830",
+                "LAT": 56.95134,
+                "LKS-92 X": 509386,
+                "LKS-92 Y": 311980,
+                "LON": 24.15431,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Anša Rūtentāla kustību teātris",
+                "_id": 453,
+                "rank": 0.0706241
+            },
+            {
+                "Adrese": "Kaļķu iela 16, Rīga, LV-1050",
+                "ISIL kods": "LV-TEA-010823",
+                "LAT": 56.94899,
+                "LKS-92 X": 506662,
+                "LKS-92 Y": 311714,
+                "LON": 24.10952,
+                "Nozare": "Teātri",
+                "Objekta nosaukums": "Mihaila Čehova Rīgas Krievu teātris ",
+                "_id": 5601,
+                "rank": 0.0706241
+            }
+        ],
+        "records_format": "objects",
+        "resource_id": "92af15f3-9674-426e-925c-86c6254baa0d",
+        "total": 124
+    },
+    "success": true
+}
+
+      function init() {
+        map = new OpenLayers.Map("basicMap");
+        var mapnik         = new OpenLayers.Layer.OSM();
+        var fromProjection = new OpenLayers.Projection("EPSG:4326");
+        var toProjection   = new OpenLayers.Projection("EPSG:3857"); 
+        var position       = new OpenLayers.LonLat(26.21,56.85).transform( fromProjection, toProjection);
+        var zoom           = 15; 
+
+        map.addLayer(mapnik);
+        map.setCenter(position, zoom );
+
+      }
+
+      function initWithPopup() {
+    
+	    // The overlay layer for our marker, with a simple diamond as symbol
+	    overlay = new OpenLayers.Layer.Vector('Overlay', {
+	        styleMap: new OpenLayers.StyleMap({
+	            externalGraphic: 'OpenLayers-2.13.1/img/marker.png',
+	            graphicWidth: 20, graphicHeight: 24, graphicYOffset: -24,
+	            title: '${tooltip}'
+	        })
+	    });
+
+	    // The location of our marker and popup. We usually think in geographic
+	    // coordinates ('EPSG:4326'), but the map is projected ('EPSG:3857').
+	    var myLocation = new OpenLayers.Geometry.Point(26.21981,56.85459)
+	        .transform('EPSG:4326', 'EPSG:3857');
+
+	    // We add the marker with a tooltip text to the overlay
+	    overlay.addFeatures([
+	        new OpenLayers.Feature.Vector(myLocation, {tooltip: 'Ģimnāzija'})
+	    ]);
+
+	    // A popup with some information about our location
+	    var popup = new OpenLayers.Popup.FramedCloud("Popup", 
+	        myLocation.getBounds().getCenterLonLat(), null,
+	        '<a target="_blank" href="http://openlayers.org/">We</a> ' +
+	        'could be here.<br>Or elsewhere.', null,
+	        true // <-- true if we want a close (X) button, false otherwise
+	    );
+
+	    // Finally we create the map
+	    map = new OpenLayers.Map({
+	        div: "basicMap", projection: "EPSG:3857",
+	        layers: [new OpenLayers.Layer.OSM()],
+	        center: myLocation.getBounds().getCenterLonLat(), 
+	        zoom: 15,
+	        eventListeners: {
+		        /*featureover: function(e) {
+		            e.feature.renderIntent = "select";
+		            e.feature.layer.drawFeature(e.feature);
+		            log("Map says: Pointer entered " + e.feature.id + " on " + e.feature.layer.name);
+		        },
+		        featureout: function(e) {
+		            e.feature.renderIntent = "default";
+		            e.feature.layer.drawFeature(e.feature);
+		            log("Map says: Pointer left " + e.feature.id + " on " + e.feature.layer.name);
+		        },
+		        featureclick: function(e) {
+		            log("Map says: " + e.feature.id + " clicked on " + e.feature.layer.name);
+		        }*/
+		    }
+	    });
+	    map.addLayer(overlay);
+	    // and add the popup to it.
+	    map.addPopup(popup);
+
+	    // Add another marker
+	    var marker = new OpenLayers.Geometry.Point(26.21722,56.85534)
+	        .transform('EPSG:4326', 'EPSG:3857');
+	    overlay.addFeatures([
+	        new OpenLayers.Feature.Vector(marker, {tooltip: 'Vidusskola'})
+	    ]);
+
+	    showData(data);
+
+	}
+
+	function showData(data){
+        if(data&&data.hasOwnProperty("result")&&data.result.hasOwnProperty("records")&&data.result.records.length>0){
+            for(var i = 0; i < data.result.records.length; i++){
+                var record = data.result.records[i];
+                overlay.addFeatures([new OpenLayers.Feature.Vector(new OpenLayers.Geometry.Point(record.LON,record.LAT).transform('EPSG:4326', 'EPSG:3857'), 
+                                     {tooltip: record["Objekta nosaukums"]})
+                                    ]);
+            }
+        }
+      }
+    </script>
+  </head>
+  <body onload="initWithPopup();">
+    <div id="basicMap"></div>
+  </body>
+</html>
